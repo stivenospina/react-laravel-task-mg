@@ -13,5 +13,5 @@ import './bootstrap';
  */
 
 import './components/App';
-import './components/Header';
-import './components/Footer';
+import './components/layouts/Header';
+import './components/layouts/Footer';

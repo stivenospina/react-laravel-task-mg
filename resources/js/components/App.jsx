@@ -1,43 +1,40 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './layouts/Header';
 
 
 
 class App extends Component {
+    state = {
+        PUBLIC_URL: "/home",
+    }
     render() {
         return (
             <div>
                 <Router>
+                    <div id="header"></div>
                     <div>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <Link to="/">Home</Link>
-                                </li>
-                                <li>
-                                    <Link to="/about">About</Link>
-                                </li>
-                                <li>
-                                    <Link to="/users">Users</Link>
-                                </li>
-                            </ul>
-                        </nav>
-
-                        {/* A <Switch> looks through its children <Route>s and
+                        <Container>
+                            {/* A <Switch> looks through its children <Route>s and
                             renders the first one that matches the current URL. */}
-                        <Routes>
-                            <Route path="/about" element={<About />}>
-                            </Route>
-                            <Route path="/users" element={<Users />}>
-                            </Route>
-                            <Route path="/" element={<Home />}>
-                            </Route>
-                        </Routes>
+                            <Routes>
+                                <Route path={`${this.state.PUBLIC_URL}`} >
+                                    <Home />
+                                </Route>
+                                <Route path={`${this.state.PUBLIC_URL}/about`} >
+                                    <About />
+                                </Route>
+                                <Route path={`${this.state.PUBLIC_URL}/contact`} >
+                                    <Contact />
+                                </Route>
+                            </Routes>
+                            <div id="footer"></div>
+                        </Container>
                     </div>
                 </Router>
             </div>
-            
+
         );
     }
 }
