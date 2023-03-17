@@ -15,3 +15,6 @@ import './bootstrap';
 import './components/App';
 import './components/layouts/Header';
 import './components/layouts/Footer';
+import './components/pages/Home';
+import './components/pages/About';
+import './components/pages/Contact';

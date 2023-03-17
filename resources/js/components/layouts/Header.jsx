@@ -11,15 +11,11 @@ function Header() {
                 <Container>
                     <Navbar.Brand href="/">Task Management</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="#">
-                            <Link to={`${publicURL}`} >Home</Link>
-                        </Nav.Link>
-                        <Nav.Link href="#">
-                            {/* <Link to={`${publicURL}`} >About</Link> */}
-                        </Nav.Link>
-                        <Nav.Link href="#">
-                            {/* <Link to={`${publicURL}`} >Contact</Link> */}
-                        </Nav.Link>
+                        <Link className="nav-link" to={`${publicURL}`} >Home</Link>
+                    
+                        <Link className="nav-link" to={`${publicURL}/about`} >About</Link>
+                    
+                        <Link className="nav-link" to={`${publicURL}/contact`} >Contact</Link>
                     </Nav>
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
@@ -36,12 +32,12 @@ function Header() {
 
 export default Header;
 
-if (document.getElementById("header")) {
-    const Index = ReactDOM.createRoot(document.getElementById("header"));
+// if (document.getElementById("header")) {
+//     const Index = ReactDOM.createRoot(document.getElementById("header"));
 
-    Index.render(
-        <React.StrictMode>
-            <Header />
-        </React.StrictMode>
-    )
-}
+//     Index.render(
+//         <React.StrictMode>
+//             <Header />
+//         </React.StrictMode>
+//     )
+// }

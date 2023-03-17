@@ -19,7 +19,7 @@
 </head>
 <body>
     {{-- <div id="header"></div> --}}
-    <main class="py-4">
+    <main>
         @yield('content')
     </main>
     {{-- <div id="footer"></div> --}}

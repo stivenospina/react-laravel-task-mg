@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import Footer from './layouts/Footer';
 import Header from './layouts/Header';
-
-
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Home from './pages/Home';
 
 class App extends Component {
     state = {
@@ -13,42 +16,28 @@ class App extends Component {
         return (
             <div>
                 <Router>
-                    <div id="header"></div>
+                    <Header />
                     <div>
-                        <Container>
-                            {/* A <Switch> looks through its children <Route>s and
+                        {/* A <Switch> looks through its children <Route>s and
                             renders the first one that matches the current URL. */}
-                            <Routes>
-                                <Route path={`${this.state.PUBLIC_URL}`} >
-                                    <Home />
-                                </Route>
-                                <Route path={`${this.state.PUBLIC_URL}/about`} >
-                                    <About />
-                                </Route>
-                                <Route path={`${this.state.PUBLIC_URL}/contact`} >
-                                    <Contact />
-                                </Route>
-                            </Routes>
-                            <div id="footer"></div>
-                        </Container>
+                        <Switch>
+                            <Route path={`${this.state.PUBLIC_URL}/`} >
+                                <Home />
+                            </Route>
+                            <Route path={`${this.state.PUBLIC_URL}/about`} >
+                                <About />
+                            </Route>
+                            <Route path={`${this.state.PUBLIC_URL}/contact`} >
+                                <Contact />
+                            </Route>
+                        </Switch>
                     </div>
+                    <Footer />
                 </Router>
             </div>
 
         );
     }
-}
-
-function Home() {
-    return <h2>Home</h2>;
-}
-
-function About() {
-    return <h2>About</h2>;
-}
-
-function Users() {
-    return <h2>Users</h2>;
 }
 
 export default App;

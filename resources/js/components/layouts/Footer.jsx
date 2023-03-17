@@ -15,6 +15,7 @@ function Footer() {
                         alt="React Bootstrap logo"
                     />
                 </Navbar.Brand>
+                <p className='text-white'>&copy; {new Date().getFullYear()} - All Right Received</p>
             </Container>
         </Navbar>
     );
@@ -22,12 +23,12 @@ function Footer() {
 
 export default Footer;
 
-if (document.getElementById("footer")) {
-    const Index = ReactDOM.createRoot(document.getElementById("footer"));
+// if (document.getElementById("footer")) {
+//     const Index = ReactDOM.createRoot(document.getElementById("footer"));
 
-    Index.render(
-        <React.StrictMode>
-            <Footer />
-        </React.StrictMode>
-    )
-}
+//     Index.render(
+//         <React.StrictMode>
+//             <Footer />
+//         </React.StrictMode>
+//     )
+// }
