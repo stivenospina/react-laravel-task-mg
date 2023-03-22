@@ -5,7 +5,6 @@ namespace App\repositories;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\interfaces\CrudInterface;
-use Illuminate\Support\Facades\Auth;
 
 class ProjectRepository implements CrudInterface
 {
@@ -17,7 +16,7 @@ class ProjectRepository implements CrudInterface
 
     public function findById($id)
     {
-        $project = Project::find($id);
+        $project = Project::with('tasks')->find($id);
         return $project;
     }
 
@@ -27,18 +26,27 @@ class ProjectRepository implements CrudInterface
             'name' => $request->name,
             'description' => $request->description,
             'status' => $request->status ?? 0,
-            'user_id' => Auth::user()->id,
+            'user_id' => 1,
         ]);
         return $project;
     }
 
     public function edit(Request $request, $id)
     {
-        return 0;
+        $project = $this->findById($id);
+        $project->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'status' => $request->status ?? 0,
+            'user_id' => 1,
+        ]);
+        return $project;
     }
 
-    public function delete(Request $request, $id)
+    public function delete($id)
     {
-        return 0;
+        $project = $this->findById($id);
+        $project->delete();
+        return $project;
     }
 }

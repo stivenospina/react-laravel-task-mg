@@ -10,5 +10,5 @@ interface CrudInterface
     public function findById($id);
     public function create(Request $request);
     public function edit(Request $request, $id);
-    public function delete(Request $request, $id);
+    public function delete($id);
 }
