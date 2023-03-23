@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container } from 'react-bootstrap';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -7,6 +8,7 @@ import Header from './layouts/Header';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
+import ProjectList from './pages/projects/ProjectList';
 
 class App extends Component {
     state = {
@@ -18,19 +20,25 @@ class App extends Component {
                 <Router>
                     <Header />
                     <div>
-                        {/* A <Switch> looks through its children <Route>s and
-                            renders the first one that matches the current URL. */}
-                        <Switch>
-                            <Route path={`${this.state.PUBLIC_URL}/`} >
-                                <Home />
-                            </Route>
-                            <Route path={`${this.state.PUBLIC_URL}/about`} >
-                                <About />
-                            </Route>
-                            <Route path={`${this.state.PUBLIC_URL}/contact`} >
-                                <Contact />
-                            </Route>
-                        </Switch>
+                        <Container className='p-4'>
+                            {/* A <Switch> looks through its children <Route>s and
+                                renders the first one that matches the current URL. */}
+                            <Switch>
+                                <Route path={`${this.state.PUBLIC_URL}/`} >
+                                    {/* <Home /> */}
+                                    <ProjectList />
+                                </Route>
+                                <Route path={`${this.state.PUBLIC_URL}/about`} >
+                                    <About />
+                                </Route>
+                                <Route path={`${this.state.PUBLIC_URL}/contact`} >
+                                    <Contact />
+                                </Route>
+                                <Route path={`${this.state.PUBLIC_URL}/projects`} >
+                                    <ProjectList />
+                                </Route>
+                            </Switch>
+                        </Container>
                     </div>
                     <Footer />
                 </Router>
