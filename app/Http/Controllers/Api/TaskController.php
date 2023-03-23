@@ -12,7 +12,7 @@ class TaskController extends Controller
     public $taskRepository;
 
     /**
-     * 
+     * Constructor for the controller
      */
     public function __construct(TaskRepository $taskRepository)
     {
@@ -80,7 +80,6 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         $task = $this->taskRepository->findById($id);
-        dd($request->all());
         if(is_null($task)){
             return response()->json([
                 'success' => false,

@@ -14,7 +14,7 @@ class ProjectController extends Controller
     public $projectRepository;
 
     /**
-     * 
+     * Constructor for the controller
      */
     public function __construct(ProjectRepository $projectRepository)
     {
