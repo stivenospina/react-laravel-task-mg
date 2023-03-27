@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card';
 export default class ProjectList extends Component {
     state = {
         projectList: [],
-        isLoafing: false,
+        isLoading: false,
     };
 
     componentDidMount() {
@@ -15,13 +15,13 @@ export default class ProjectList extends Component {
     }
 
     getProjectList = () => {
-        this.setState({ isLoafing: true });
+        this.setState({ isLoading: true });
         // call api project list data from axios
         Axios.get("http://localhost:8000/api/projects").then((res) => {
             const projectList = res.data.data;
             this.setState({
                 projectList,
-                isLoafing: false,
+                isLoading: false,
             });
         });
     }
@@ -30,7 +30,7 @@ export default class ProjectList extends Component {
         return (
             <>
                 <h2>Project List <Badge variant="primary">{this.state.projectList.length}</Badge></h2>
-                {this.state.isLoafing &&
+                {this.state.isLoading &&
                     <div className='text-center mt-5'>
                         <Spinner animation="border" role="status">
                             <span className="visually-hidden">Loading...</span>
