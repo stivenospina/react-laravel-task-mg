@@ -51,9 +51,7 @@ export default class ProjectCreate extends Component {
                         </h2>
                     </div>
                     <div className="float-end">
-                        <a className="btn btn-info">
-                            <Link to={`${PUBLIC_URL}/projects`}>See all projects</Link>
-                        </a>
+                        <Link to={`${PUBLIC_URL}/projects`} className="btn btn-info">See all projects</Link>
                     </div>
                     <div className="clearfix"></div>
                 </div>

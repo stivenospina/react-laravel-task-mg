@@ -31,7 +31,6 @@ export default class ProjectList extends Component {
     render() {
         return (
             <>
-
                 <div className="header-part">
                     <div className="float-start">
                         <h2>
@@ -42,9 +41,7 @@ export default class ProjectList extends Component {
                         </h2>
                     </div>
                     <div className="float-end">
-                        <a className="btn btn-info">
-                            <Link to={`${PUBLIC_URL}/project/create`}>Create</Link>
-                        </a>
+                        <Link to={`${PUBLIC_URL}/project/create`} className="btn btn-info">Create</Link>
                     </div>
                     <div className="clearfix"></div>
                 </div>
