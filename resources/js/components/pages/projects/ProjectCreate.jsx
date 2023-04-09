@@ -9,16 +9,41 @@ import { PUBLIC_URL } from "../../../constant";
 export default class ProjectCreate extends Component {
     state = {
         isLoading: false,
+        name: "",
+        description: "",
     };
 
     componentDidMount() {
 
     }
 
+    changeInput = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value,
+            [e.target.description]: e.target.value,
+        });
+    }
+
+    submitForm = (e) => {
+        e.preventDefault();
+        const postBody = {
+            name: this.state.name,
+            description: this.state.description,
+            user_id: 1,
+        }
+        Axios.post("http://localhost:8000/api/projects", postBody).then((res) => {
+            if(res.data.success == true) {
+                alert(res.data.message);
+            }
+            else if (res.data.success == false) {
+                alert(res.data.message);
+            }
+        });
+    };
+
     render() {
         return (
             <>
-
                 <div className="header-part">
                     <div className="float-start">
                         <h2>
@@ -41,15 +66,15 @@ export default class ProjectCreate extends Component {
                 )}
                 <Card className="my-2">
                     <Card.Body>
-                        <Form>
+                        <Form onSubmit={this.submitForm}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Project Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Project Name" />
+                                <Form.Control type="text" placeholder="Enter Project Name" value={this.state.name} name="name" onChange={(e) => this.changeInput(e)} />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label>Project Description</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Project Description" as="textarea" rows="5" />
+                                <Form.Control type="text" placeholder="Enter Project Description" as="textarea" rows="5" value={this.state.description} name="description" onChange={(e) => this.changeInput(e)} />
                             </Form.Group>
                             <Button variant="primary" type="submit">
                                 Save Project
