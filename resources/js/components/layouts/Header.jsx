@@ -12,9 +12,9 @@ const Header = () => {
                     <Navbar.Brand href="/">Task Management</Navbar.Brand>
                     <Nav className="me-auto">
                         <Link className="nav-link" to={`${publicURL}/`} >Home</Link>
-                    
+
                         <Link className="nav-link" to={`${publicURL}/about`} >About</Link>
-                    
+
                         <Link className="nav-link" to={`${publicURL}/contact`} >Contact</Link>
 
                         <Link className="nav-link" to={`${publicURL}/projects`} >Projects</Link>

@@ -4,11 +4,12 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 
 function Footer() {
     return (
+        <>
         <Navbar bg="dark" fixed="bottom">
             <Container>
                 <Navbar.Brand href="#home">
                     <img
-                        src="assets/img/logo.svg"
+                        src="../assets/img/logo.svg"
                         width="30"
                         height="30"
                         className="d-inline-block align-top"
@@ -17,7 +18,8 @@ function Footer() {
                 </Navbar.Brand>
                 <p className='text-white'>&copy; {new Date().getFullYear()} - All Right Received</p>
             </Container>
-        </Navbar>
+            </Navbar>
+        </>
     );
 }
 
@@ -27,8 +29,6 @@ export default Footer;
 //     const Index = ReactDOM.createRoot(document.getElementById("footer"));
 
 //     Index.render(
-//         <React.StrictMode>
-//             <Footer />
-//         </React.StrictMode>
+//          <Footer />
 //     )
 // }

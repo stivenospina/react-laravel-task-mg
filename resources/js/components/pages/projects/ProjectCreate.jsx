@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { PUBLIC_URL } from "../../../constant";
+import { createProject } from "../../../services/ProjectService";
 
 export default class ProjectCreate extends Component {
     state = {
@@ -13,10 +14,6 @@ export default class ProjectCreate extends Component {
         description: "",
     };
 
-    componentDidMount() {
-
-    }
-
     changeInput = (e) => {
         this.setState({
             [e.target.name]: e.target.value,
@@ -24,21 +21,23 @@ export default class ProjectCreate extends Component {
         });
     }
 
-    submitForm = (e) => {
+    submitForm = async (e) => {
         e.preventDefault();
-        const postBody = {
+        this.setState({
+            isLoading: true,
+        });
+        const data = {
             name: this.state.name,
             description: this.state.description,
             user_id: 1,
+        };
+        const response = await createProject(data);
+        if (response.success) {
+            alert("Project has been created");
+        }else{
+            alert("Something went wrong");
         }
-        Axios.post("http://localhost:8000/api/projects", postBody).then((res) => {
-            if(res.data.success == true) {
-                alert(res.data.message);
-            }
-            else if (res.data.success == false) {
-                alert(res.data.message);
-            }
-        });
+
     };
 
     render() {
@@ -67,12 +66,12 @@ export default class ProjectCreate extends Component {
                         <Form onSubmit={this.submitForm}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Project Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Project Name" value={this.state.name} name="name" onChange={(e) => this.changeInput(e)} />
+                                <Form.Control type="text" placeholder="Enter Project Name" name="name" value={this.state.name} onChange={(e) => this.changeInput(e)} />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label>Project Description</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Project Description" as="textarea" rows="5" value={this.state.description} name="description" onChange={(e) => this.changeInput(e)} />
+                                <Form.Control type="text" placeholder="Enter Project Description" as="textarea" rows="5" name="description" value={this.state.description} onChange={(e) => this.changeInput(e)} />
                             </Form.Group>
                             <Button variant="primary" type="submit">
                                 Save Project
